@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yılan Oyunu</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        color: white;
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .game-container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      canvas {
+        border: 3px solid #4caf50;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+      }
+
+      .score-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .score,
+      .high-score {
+        font-size: 28px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        background: rgba(76, 175, 80, 0.2);
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 2px solid #4caf50;
+      }
+
+      .controls {
+        margin-top: 20px;
+        text-align: center;
+        color: #ccc;
+        font-size: 14px;
+      }
+
+      .menu {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        display: none;
+      }
+
+      .menu.active {
+        display: block;
+      }
+
+      .menu button {
+        background: #4caf50;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .menu button:hover {
+        background: #45a049;
+        transform: scale(1.1);
+      }
+
+      .difficulty {
+        margin: 20px 0;
+      }
+
+      .difficulty button {
+        background: #2196f3;
+      }
+
+      .difficulty button.active {
+        background: #1976d2;
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="score-container">
+        <div class="score">Skor: <span id="score">0</span></div>
+        <div class="high-score">En Yüksek: <span id="highScore">0</span></div>
+      </div>
+      <canvas id="gameCanvas" width="400" height="400"></canvas>
+      <div class="controls">Kontroller: Ok tuşları veya WASD</div>
+
+      <div id="menu" class="menu">
+        <h2>Yılan Oyunu</h2>
+        <div class="difficulty">
+          <button data-speed="150" class="active">Kolay</button>
+          <button data-speed="100">Orta</button>
+          <button data-speed="50">Zor</button>
+        </div>
+        <button id="startGame">Oyunu Başlat</button>
+        <button id="resumeGame" style="display: none">Devam Et</button>
+      </div>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>
